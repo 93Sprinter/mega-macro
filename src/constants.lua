@@ -64,9 +64,21 @@ MegaMacroInfoFunctions = {
 		IsCurrent = IsCurrentSpell,
 		IsEquipped = function(_) return false end,
 		IsAutoRepeat = IsAutoRepeatSpell,
-		IsLocked = C_LevelLink.IsSpellLocked,
+		IsLocked = function() 
+			if WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then 
+				return C_LevelLink.IsSpellLocked 
+			else 
+				return false 
+			end 
+		end,
 		GetLossOfControlCooldown = GetSpellLossOfControlCooldown,
-		IsOverlayed = IsSpellOverlayed
+		IsOverlayed = function(spellId)
+			if WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then
+				return IsSpellOverlayed(spellId)
+			else 
+				return false 
+			end
+		end
 	},
  	Item = {
 		GetCooldown = GetItemCooldown,
