@@ -1,10 +1,6 @@
 name: Package Mega Macro for Classic TBC
 
 on:
-  push:
-    branches: [ migrate-to-classic ]
-  pull_request:
-    branches: [ migrate-to-classic ]
   workflow_dispatch:
     inputs:
       version:
@@ -31,7 +27,7 @@ jobs:
     - name: Make folder for zips
       run: |
         mkdir -p .releases/${{steps.init.outputs.addon_name}}
-        rsync -r --exclude '.*' . .releases/${{steps.init.outputs.addon_name}}
+        rsync -r --exclude={'.*','scripts','*.md','*.png'} . .releases/${{steps.init.outputs.addon_name}}
 
     - name: Create zip
       run: |
