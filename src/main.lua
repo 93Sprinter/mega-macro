@@ -67,3 +67,5 @@ f:SetScript("OnEvent", function(self, event)
         MegaMacroActionBarEngine.OnTargetChanged()
     end
 end)
+
+MegaMacro_RegisterShiftClicks()
